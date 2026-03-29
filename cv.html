@@ -294,35 +294,6 @@
 </head>
 <body>
 
-<!-- ── Print Hint Modal ───────────────────────── -->
-<div class="hint-overlay" id="hint-overlay">
-  <div class="hint-box">
-    <p class="hint-title">📄 Exportar como PDF</p>
-    <p class="hint-sub">Para um PDF limpo, siga os passos no diálogo de impressão:</p>
-    <ol class="hint-steps">
-      <li class="hint-step">
-        <span class="hint-step-num">1</span>
-        <span>Em <strong>Destino</strong>, escolha <strong>"Salvar como PDF"</strong></span>
-      </li>
-      <li class="hint-step">
-        <span class="hint-step-num">2</span>
-        <span>Em <strong>Mais configurações → Margens</strong>, selecione <strong>"Nenhuma"</strong> ou <strong>"Mínima"</strong></span>
-      </li>
-      <li class="hint-step">
-        <span class="hint-step-num">3</span>
-        <span>Desmarque <strong>"Cabeçalhos e rodapés"</strong> (remove URL e data)</span>
-      </li>
-      <li class="hint-step">
-        <span class="hint-step-num">4</span>
-        <span>Clique em <strong>"Salvar"</strong> ✓</span>
-      </li>
-    </ol>
-    <div class="hint-actions">
-      <button class="hint-btn hint-btn-cancel" onclick="closeHint()">Cancelar</button>
-      <button class="hint-btn hint-btn-go" onclick="doPrint()">Abrir impressão →</button>
-    </div>
-  </div>
-</div>
 
 <!-- ── Floating Toolbar ───────────────────────── -->
 <div class="toolbar" id="toolbar">
@@ -331,7 +302,7 @@
     Versão Web
   </a>
   <div class="toolbar-sep"></div>
-  <button onclick="openHint()" class="btn btn-white" id="btn-pdf">
+  <button onclick="window.print()" class="btn btn-white" id="btn-pdf">
     <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
       <polyline points="7 10 12 15 17 10"/>
@@ -523,18 +494,7 @@
 </main>
 
 <script>
-  function openHint() {
-    document.getElementById('hint-overlay').classList.add('show');
-  }
-  function closeHint() {
-    document.getElementById('hint-overlay').classList.remove('show');
-  }
-  function doPrint() {
-    closeHint();
-    setTimeout(() => window.print(), 250);
-  }
-  // ESC to close hint
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeHint(); });
+  // Exportar PDF direto
 </script>
 
 </body>
