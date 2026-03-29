@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wilkens Costa – Currículo (Versão Impressa)</title>
+  <title>Wilkens Costa – Currículo</title>
   <meta name="description" content="Versão para impressão do currículo de Wilkens Costa – Analista de TI."/>
   <meta name="robots" content="noindex"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>"/>
@@ -12,298 +12,327 @@
   <link href="assets/css2_2832c0ff631d.css" rel="stylesheet"/>
   <link href="assets/css2_9b8bf743d4a8.css" rel="stylesheet"/>
   <style>
-    /* ── Reset ───────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --accent:  #1d4ed8;
-      --text:    #111827;
-      --muted:   #6b7280;
-      --border:  #e5e7eb;
-      --light:   #f9fafb;
+      --accent: #1d4ed8;
+      --text:   #111827;
+      --muted:  #6b7280;
+      --border: #e5e7eb;
+      --light:  #f9fafb;
     }
 
-    /* ── Body / Page shell ───────────────── */
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      font-size: 14px;
-      line-height: 1.65;
+      font-size: 13.5px;
+      line-height: 1.6;
       color: var(--text);
-      background: #f3f4f6;
+      background: #e8edf2;
       -webkit-font-smoothing: antialiased;
-      padding-bottom: 5rem; /* space for toolbar */
+      padding-bottom: 6rem;
     }
 
-    /* ── Floating action toolbar ─────────── */
+    /* ── Toolbar ─────────────────────────────── */
     .toolbar {
       position: fixed;
       bottom: 1.5rem;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 100;
+      z-index: 200;
       display: flex;
       align-items: center;
-      gap: .6rem;
+      gap: .5rem;
       background: #111827;
       color: #fff;
       border-radius: 99px;
-      padding: .6rem 1rem;
-      box-shadow: 0 8px 40px rgba(0,0,0,.35);
+      padding: .55rem .85rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,.4);
       white-space: nowrap;
+      user-select: none;
     }
-    .toolbar-label {
-      font-size: .75rem;
-      font-weight: 500;
-      color: rgba(255,255,255,.55);
-      padding-right: .4rem;
-      border-right: 1px solid rgba(255,255,255,.15);
+    .toolbar-sep {
+      width: 1px; height: 18px;
+      background: rgba(255,255,255,.18);
+      margin: 0 .1rem;
     }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .4rem .85rem;
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .38rem .8rem;
       border-radius: 99px;
-      font-size: .78rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      transition: all .2s;
+      font-size: .76rem; font-weight: 600;
+      text-decoration: none; cursor: pointer;
+      border: none; transition: all .18s;
     }
-    .btn-ghost {
-      background: rgba(255,255,255,.1);
-      color: #fff;
-    }
+    .btn-ghost { background: rgba(255,255,255,.1); color: #fff; }
     .btn-ghost:hover { background: rgba(255,255,255,.2); }
-    .btn-solid {
-      background: #fff;
-      color: #111827;
-    }
-    .btn-solid:hover { background: #f0f0f0; transform: scale(1.03); }
-    .btn svg { flex-shrink: 0; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; transform: scale(1.03); }
+    .btn-white { background: #fff; color: #111827; }
+    .btn-white:hover { background: #f0f0f0; transform: scale(1.03); }
 
-    /* ── A4 Paper ────────────────────────── */
+    /* ── Print Hint Modal ────────────────────── */
+    .hint-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(4px);
+      z-index: 300;
+      align-items: center; justify-content: center;
+    }
+    .hint-overlay.show { display: flex; }
+    .hint-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    .hint-title {
+      font-size: 1rem; font-weight: 700;
+      margin-bottom: .3rem;
+    }
+    .hint-sub {
+      font-size: .8rem; color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+    .hint-steps { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .hint-step {
+      display: flex; align-items: flex-start; gap: .7rem;
+      font-size: .82rem; color: #374151;
+    }
+    .hint-step-num {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: #111827; color: #fff;
+      font-size: .68rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hint-step strong { color: var(--text); }
+    .hint-actions {
+      display: flex; gap: .5rem; margin-top: 1.2rem; justify-content: flex-end;
+    }
+    .hint-btn {
+      padding: .5rem 1.1rem; border-radius: 99px;
+      font-size: .8rem; font-weight: 600;
+      cursor: pointer; border: none; transition: all .15s;
+    }
+    .hint-btn-cancel { background: #f3f4f6; color: #374151; }
+    .hint-btn-cancel:hover { background: #e5e7eb; }
+    .hint-btn-go { background: #111827; color: #fff; }
+    .hint-btn-go:hover { background: #1f2937; }
+
+    /* ── A4 Paper ────────────────────────────── */
     .paper {
       width: 210mm;
       min-height: 297mm;
       margin: 2rem auto;
       background: #fff;
-      box-shadow: 0 4px 40px rgba(0,0,0,.12);
-      padding: 14mm 16mm 14mm;
+      box-shadow: 0 2px 50px rgba(0,0,0,.15);
+      padding: 13mm 15mm 13mm;
     }
 
-    /* ── Header / Name block ─────────────── */
+    /* ── Header ──────────────────────────────── */
     .cv-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid var(--text);
-      margin-bottom: 1.15rem;
+      align-items: baseline;
+      gap: 1rem;
+      padding-bottom: .85rem;
+      border-bottom: 2.5px solid var(--text);
+      margin-bottom: 1rem;
     }
     .cv-name {
       font-family: 'Manrope', sans-serif;
       font-weight: 800;
-      font-size: 2.4rem;
-      letter-spacing: -.03em;
+      font-size: 2.2rem;
+      letter-spacing: -.035em;
       line-height: 1;
       color: var(--text);
     }
     .cv-title {
-      font-size: .9rem;
+      font-size: .82rem;
       color: var(--muted);
       margin-top: .3rem;
       font-weight: 500;
     }
     .cv-contacts {
       text-align: right;
-      font-size: .76rem;
+      font-size: .73rem;
       color: var(--muted);
-      line-height: 1.9;
+      line-height: 1.85;
       flex-shrink: 0;
     }
-    .cv-contacts a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .cv-contacts a:hover { text-decoration: underline; }
+    .cv-contacts a { color: var(--accent); text-decoration: none; }
 
-    /* ── Section ─────────────────────────── */
-    .cv-section { margin-bottom: 1.1rem; }
+    /* ── Section ─────────────────────────────── */
+    .cv-section { margin-bottom: .95rem; }
     .cv-section-title {
-      font-size: .72rem;
+      font-size: .68rem;
       font-weight: 700;
-      letter-spacing: .12em;
+      letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: .5rem;
-      padding-bottom: .25rem;
+      margin-bottom: .45rem;
+      padding-bottom: .2rem;
       border-bottom: 1px solid var(--border);
     }
 
-    /* ── About ───────────────────────────── */
-    .cv-about {
-      font-size: .875rem;
-      color: #374151;
-      line-height: 1.75;
-    }
-    .cv-about + .cv-about { margin-top: .5rem; }
+    /* ── About ───────────────────────────────── */
+    .cv-about { font-size: .84rem; color: #374151; line-height: 1.7; }
+    .cv-about + .cv-about { margin-top: .4rem; }
     .cv-about strong { color: var(--text); font-weight: 600; }
 
-    /* ── Experience / Education ──────────── */
-    .cv-item { margin-bottom: .85rem; display: flex; gap: 1rem; }
+    /* ── Experience items ────────────────────── */
+    .cv-item { display: flex; gap: .85rem; margin-bottom: .7rem; }
     .cv-item:last-child { margin-bottom: 0; }
     .cv-item-date {
-      flex-shrink: 0;
-      width: 6rem;
-      font-size: .74rem;
-      color: var(--muted);
-      padding-top: .1rem;
-      line-height: 1.5;
+      flex-shrink: 0; width: 5.5rem;
+      font-size: .7rem; color: var(--muted);
+      padding-top: .05rem; line-height: 1.5;
     }
     .cv-item-body { flex: 1; }
-    .cv-item-role {
-      font-weight: 700;
-      font-size: .9rem;
-      line-height: 1.3;
-    }
-    .cv-item-company {
-      font-size: .8rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: .25rem;
-    }
-    .cv-item-desc {
-      font-size: .82rem;
-      color: #4b5563;
-      line-height: 1.65;
-      margin-top: .2rem;
-    }
+    .cv-item-role    { font-weight: 700; font-size: .875rem; line-height: 1.25; }
+    .cv-item-company { font-size: .77rem; color: var(--accent); font-weight: 600; margin-bottom: .22rem; }
+    .cv-item-desc    { font-size: .79rem; color: #4b5563; line-height: 1.6; margin-top: .18rem; }
 
-    /* ── Tags ────────────────────────────── */
-    .cv-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .3rem;
-      margin-top: .3rem;
-    }
+    /* ── Tags ────────────────────────────────── */
+    .cv-tags { display: flex; flex-wrap: wrap; gap: .25rem; margin-top: .25rem; }
     .cv-tag {
-      font-size: .7rem;
-      font-weight: 500;
-      background: var(--light);
-      border: 1px solid var(--border);
-      border-radius: 99px;
-      padding: .1rem .55rem;
-      color: #374151;
+      font-size: .67rem; font-weight: 500;
+      background: var(--light); border: 1px solid var(--border);
+      border-radius: 99px; padding: .08rem .5rem; color: #374151;
     }
 
-    /* ── Skills grid ─────────────────────── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: .6rem;
+    /* ── Skills (horizontal list per group) ──── */
+    .skills-row {
+      display: flex; gap: 1.5rem;
     }
+    .skill-col { flex: 1; }
     .skill-group-title {
-      font-size: .7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--muted);
-      margin-bottom: .3rem;
+      font-size: .67rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      color: var(--muted); margin-bottom: .3rem;
     }
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .25rem;
-    }
+    .skill-list { display: flex; flex-wrap: wrap; gap: .22rem; }
 
-    /* ── Certs ───────────────────────────── */
+    /* ── Certs ───────────────────────────────── */
     .cert-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      font-size: .82rem;
-      padding: .4rem 0;
-      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 1rem; font-size: .79rem;
+      padding: .35rem 0; border-bottom: 1px solid var(--border);
     }
     .cert-item:last-child { border-bottom: none; }
     .cert-name-cv { font-weight: 600; }
-    .cert-issuer-cv { font-size: .74rem; color: var(--muted); }
-    .cert-date-cv { flex-shrink: 0; font-size: .74rem; color: var(--muted); }
+    .cert-issuer-cv { font-size: .7rem; color: var(--muted); }
+    .cert-date-cv { flex-shrink: 0; font-size: .7rem; color: var(--muted); }
 
-    /* ── 2-column layout for lower sections */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 1.5rem;
+    /* ── Two col (skills + edu) ──────────────── */
+    .two-col { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.5rem; }
+
+    /* ── Courses ─────────────────────────────── */
+    .courses-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: .2rem 1.25rem;
     }
+    .course-line {
+      font-size: .77rem; color: #374151;
+      padding: .1rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .course-line span { color: var(--muted); }
 
-    /* ── Footer ──────────────────────────── */
+    /* ── Footer ──────────────────────────────── */
     .cv-footer {
-      margin-top: 1.2rem;
-      padding-top: .75rem;
+      margin-top: 1rem; padding-top: .65rem;
       border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      font-size: .7rem;
-      color: #9ca3af;
+      display: flex; justify-content: space-between;
+      font-size: .67rem; color: #9ca3af;
     }
 
-    /* ═══════════ PRINT ═════════════════════ */
+    /* ══ PRINT ══════════════════════════════════ */
     @media print {
+      /* This @page setting suppresses browser URL/date headers
+         on Chrome when margins=none. User must also disable
+         "Headers and footers" in the print dialog. */
       @page {
         size: A4;
-        margin: 12mm 15mm;
+        margin: 10mm 12mm;
       }
 
       body {
         background: #fff !important;
         padding-bottom: 0;
-        font-size: 11pt;
+        font-size: 10.5pt;
       }
-      .toolbar { display: none !important; }
+      .toolbar,
+      .hint-overlay { display: none !important; }
       .paper {
-        width: 100%;
-        min-height: unset;
-        margin: 0;
-        padding: 0;
-        box-shadow: none;
+        width: 100%; min-height: unset;
+        margin: 0; padding: 0; box-shadow: none;
       }
       a { color: var(--text) !important; text-decoration: none; }
       .cv-contacts a { color: var(--accent) !important; }
-      .cv-item { page-break-inside: avoid; }
-      .cv-section { page-break-inside: avoid; }
+      .cv-item  { break-inside: avoid; }
+      .cv-section { break-inside: avoid; }
+      .two-col { break-inside: avoid; }
     }
 
-    /* ═══════════ MOBILE ════════════════════ */
-    @media (max-width: 680px) {
-      body { background: #fff; }
-      .paper { width: 100%; margin: 0; box-shadow: none; padding: 1.25rem 1rem 2rem; }
-      .cv-header { flex-direction: column; }
+    /* ══ MOBILE ═════════════════════════════════ */
+    @media (max-width: 700px) {
+      body { background: #fff; padding-bottom: 5.5rem; }
+      .paper { width: 100%; margin: 0; box-shadow: none; padding: 1.2rem 1rem; }
+      .cv-header { flex-direction: column; gap: .6rem; }
       .cv-contacts { text-align: left; }
       .two-col { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .cv-name { font-size: 1.8rem; }
-      body { padding-bottom: 5rem; }
+      .skills-row { flex-direction: column; gap: .75rem; }
+      .courses-grid { grid-template-columns: 1fr; }
+      .cv-name { font-size: 1.7rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ─── Floating Toolbar ──────────────────── -->
-<div class="toolbar" id="toolbar">
-  <span class="toolbar-label">Currículo · Wilkens Costa</span>
+<!-- ── Print Hint Modal ───────────────────────── -->
+<div class="hint-overlay" id="hint-overlay">
+  <div class="hint-box">
+    <p class="hint-title">📄 Exportar como PDF</p>
+    <p class="hint-sub">Para um PDF limpo, siga os passos no diálogo de impressão:</p>
+    <ol class="hint-steps">
+      <li class="hint-step">
+        <span class="hint-step-num">1</span>
+        <span>Em <strong>Destino</strong>, escolha <strong>"Salvar como PDF"</strong></span>
+      </li>
+      <li class="hint-step">
+        <span class="hint-step-num">2</span>
+        <span>Em <strong>Mais configurações → Margens</strong>, selecione <strong>"Nenhuma"</strong> ou <strong>"Mínima"</strong></span>
+      </li>
+      <li class="hint-step">
+        <span class="hint-step-num">3</span>
+        <span>Desmarque <strong>"Cabeçalhos e rodapés"</strong> (remove URL e data)</span>
+      </li>
+      <li class="hint-step">
+        <span class="hint-step-num">4</span>
+        <span>Clique em <strong>"Salvar"</strong> ✓</span>
+      </li>
+    </ol>
+    <div class="hint-actions">
+      <button class="hint-btn hint-btn-cancel" onclick="closeHint()">Cancelar</button>
+      <button class="hint-btn hint-btn-go" onclick="doPrint()">Abrir impressão →</button>
+    </div>
+  </div>
+</div>
 
+<!-- ── Floating Toolbar ───────────────────────── -->
+<div class="toolbar" id="toolbar">
   <a href="index.html" class="btn btn-ghost" id="btn-back">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
     Versão Web
   </a>
-
-  <button onclick="exportPDF()" class="btn btn-solid" id="btn-pdf">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+  <div class="toolbar-sep"></div>
+  <button onclick="openHint()" class="btn btn-white" id="btn-pdf">
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
       <polyline points="7 10 12 15 17 10"/>
       <line x1="12" y1="15" x2="12" y2="3"/>
@@ -312,41 +341,37 @@
   </button>
 </div>
 
-<!-- ─── A4 Paper ──────────────────────────── -->
+<!-- ── A4 Paper ───────────────────────────────── -->
 <main class="paper" id="cv-paper">
 
-  <!-- Header ──────────────────────────────── -->
+  <!-- Header ──────────────────────────────────── -->
   <header class="cv-header">
     <div>
       <h1 class="cv-name">Wilkens Costa</h1>
-      <p class="cv-title">Analista de TI · Infraestrutura &amp; Segurança da Informação</p>
+      <p class="cv-title">Analista de TI &nbsp;·&nbsp; Infraestrutura &amp; Segurança da Informação</p>
     </div>
-    <div class="cv-contacts">
-      <div>Ceará, Brasil · 27 anos</div>
+    <address class="cv-contacts" style="font-style:normal;">
+      <div>Ceará, Brasil &nbsp;·&nbsp; 27 anos</div>
       <div><a href="https://wa.me/5585986177778">(85) 98617-7778</a></div>
       <div><a href="mailto:wilkens.costa@outlook.com">wilkens.costa@outlook.com</a></div>
       <div><a href="https://linkedin.com/in/wilkens-costa">linkedin.com/in/wilkens-costa</a></div>
       <div><a href="https://github.com/wilkens-costa">github.com/wilkens-costa</a></div>
-    </div>
+    </address>
   </header>
 
-  <!-- Sobre ───────────────────────────────── -->
+  <!-- Perfil ──────────────────────────────────── -->
   <section class="cv-section">
     <h2 class="cv-section-title">Perfil Profissional</h2>
     <p class="cv-about">
-      Analista de TI com expertise em <strong>infraestrutura, redes e segurança da informação</strong>,
-      com foco em gestão de <strong>Firewalls, Active Directory e GPOs</strong> e manutenção de ambientes
-      robustos com <strong>Windows Server</strong>. Atualmente modernizando operações com <strong>Python
-      e automações avançadas via n8n</strong> — eliminando processos manuais e entregando impacto real.
-    </p>
-    <p class="cv-about" style="margin-top:.5rem;">
-      Atua em paralelo como <strong>Web Developer &amp; Designer freelancer</strong> — criação de identidade
-      visual, interfaces UX/UI e plataformas SaaS completas, trazendo visão multidisciplinar para construir
-      ecossistemas tecnológicos inovadores e seguros.
+      Analista de TI especializado em <strong>infraestrutura, redes e segurança da informação</strong>, com expertise
+      em gestão de <strong>Firewalls, Active Directory e GPOs</strong> e ambientes robustos com <strong>Windows Server</strong>.
+      Modernizando operações com <strong>Python e automações via n8n</strong> — eliminando processos manuais e gerando
+      impacto real nos negócios. Atua também como <strong>Web Developer &amp; Designer freelancer</strong>, criando produtos
+      digitais com forte foco em UX/UI, de identidade visual a plataformas SaaS completas.
     </p>
   </section>
 
-  <!-- Experiência ──────────────────────────── -->
+  <!-- Experiência ──────────────────────────────── -->
   <section class="cv-section">
     <h2 class="cv-section-title">Experiência Profissional</h2>
 
@@ -359,10 +384,7 @@
           <span class="cv-tag">PDV (Linx)</span><span class="cv-tag">ERP (Athenas)</span>
           <span class="cv-tag">Helpdesk</span><span class="cv-tag">Manutenção</span>
         </div>
-        <p class="cv-item-desc">
-          Suporte técnico de TI e manutenção de equipamentos. Atendimento direto para sistemas de PDV (Linx)
-          e ERP (Athenas), garantindo continuidade operacional do ambiente de varejo.
-        </p>
+        <p class="cv-item-desc">Suporte técnico e manutenção de equipamentos. Atendimento para sistemas de PDV (Linx) e ERP (Athenas), garantindo continuidade do ambiente de varejo.</p>
       </div>
     </div>
 
@@ -376,10 +398,7 @@
           <span class="cv-tag">GPO</span><span class="cv-tag">Redes</span>
           <span class="cv-tag">Segurança da Informação</span><span class="cv-tag">Telecom</span>
         </div>
-        <p class="cv-item-desc">
-          Gestão da Segurança da Informação, administração de Firewall, Telecom e Infraestrutura de Redes.
-          Gerenciamento de Active Directory e GPOs para garantir conformidade e estabilidade corporativa.
-        </p>
+        <p class="cv-item-desc">Gestão da Segurança da Informação, administração de Firewall e Infraestrutura de Redes. Gerenciamento de Active Directory e GPOs para conformidade corporativa.</p>
       </div>
     </div>
 
@@ -392,10 +411,7 @@
           <span class="cv-tag">Suporte Técnico</span><span class="cv-tag">Manutenção de Estações</span>
           <span class="cv-tag">Helpdesk</span>
         </div>
-        <p class="cv-item-desc">
-          Suporte inicial e manutenção de estações de trabalho — base prática que originou a especialização
-          em infraestrutura e segurança.
-        </p>
+        <p class="cv-item-desc">Suporte inicial e manutenção de estações de trabalho — base prática que originou a especialização em infraestrutura e segurança.</p>
       </div>
     </div>
 
@@ -409,23 +425,19 @@
           <span class="cv-tag">Photoshop</span><span class="cv-tag">WordPress</span>
           <span class="cv-tag">Vibe Coding</span>
         </div>
-        <p class="cv-item-desc">
-          Desenvolvimento de produtos digitais do zero — identidade visual, design de interfaces e
-          plataformas SaaS completas com impacto real.
-        </p>
+        <p class="cv-item-desc">Desenvolvimento de produtos digitais do zero — identidade visual, design de interfaces e plataformas SaaS completas com impacto real.</p>
       </div>
     </div>
   </section>
 
-  <!-- Stack (2 colunas) ────────────────────── -->
+  <!-- Stack & Educação (2 cols) ────────────────── -->
   <div class="two-col">
 
-    <!-- Habilidades ─────────────────── -->
     <section class="cv-section">
       <h2 class="cv-section-title">Stack &amp; Habilidades</h2>
-      <div class="skills-grid">
-        <div>
-          <p class="skill-group-title">Infra &amp; Seg.</p>
+      <div class="skills-row">
+        <div class="skill-col">
+          <p class="skill-group-title">Infra &amp; Segurança</p>
           <div class="skill-list">
             <span class="cv-tag">Firewall</span><span class="cv-tag">Active Directory</span>
             <span class="cv-tag">GPO</span><span class="cv-tag">Windows Server</span>
@@ -433,16 +445,14 @@
             <span class="cv-tag">Telecom</span>
           </div>
         </div>
-        <div>
+        <div class="skill-col">
           <p class="skill-group-title">Automação &amp; IA</p>
           <div class="skill-list">
             <span class="cv-tag">n8n</span><span class="cv-tag">Python</span>
             <span class="cv-tag">Streamlit</span><span class="cv-tag">LangChain</span>
             <span class="cv-tag">Eng. de Prompts</span><span class="cv-tag">SQL</span>
           </div>
-        </div>
-        <div>
-          <p class="skill-group-title">Design &amp; Web</p>
+          <p class="skill-group-title" style="margin-top:.5rem;">Design &amp; Web</p>
           <div class="skill-list">
             <span class="cv-tag">UX/UI Design</span><span class="cv-tag">Photoshop</span>
             <span class="cv-tag">WordPress</span><span class="cv-tag">ERP &amp; PDV</span>
@@ -452,40 +462,35 @@
       </div>
     </section>
 
-    <!-- Formação ────────────────────── -->
     <section class="cv-section">
       <h2 class="cv-section-title">Formação Acadêmica</h2>
-
-      <div class="cv-item" style="margin-bottom:.6rem;">
-        <div class="cv-item-date" style="color:#1d4ed8; font-size:.72rem;">Em andamento</div>
+      <div class="cv-item" style="margin-bottom:.55rem;">
+        <div class="cv-item-date" style="color:#1d4ed8;">Em andamento</div>
         <div class="cv-item-body">
-          <p class="cv-item-role" style="font-size:.85rem;">Análise e Desenvolvimento de Sistemas</p>
+          <p class="cv-item-role" style="font-size:.84rem;">Análise e Desenvolvimento de Sistemas</p>
           <p class="cv-item-company">Unifametro · Início: 2022</p>
         </div>
       </div>
-
       <div class="cv-item">
-        <div class="cv-item-date" style="font-size:.72rem;">Conclusão 2016</div>
+        <div class="cv-item-date">Conclusão 2016</div>
         <div class="cv-item-body">
-          <p class="cv-item-role" style="font-size:.85rem;">Ensino Médio Completo</p>
+          <p class="cv-item-role" style="font-size:.84rem;">Ensino Médio Completo</p>
           <p class="cv-item-company">Colégio 21 Educar</p>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- Certificações ────────────────────────── -->
+  <!-- Certificações ────────────────────────────── -->
   <section class="cv-section">
     <h2 class="cv-section-title">Certificações</h2>
-
     <div class="cert-item">
       <div>
         <p class="cert-name-cv">Boas Práticas de Cibersegurança (Cybersecurity Awareness)</p>
         <p class="cert-issuer-cv">IBSEC – Instituto Brasileiro de Cibersegurança · IC-SEC-1780 · ISO 17024</p>
       </div>
-      <span class="cert-date-cv">Nov/2024 · Até nov/2027</span>
+      <span class="cert-date-cv">Nov/2024 · Válida até Nov/2027</span>
     </div>
-
     <div class="cert-item">
       <div>
         <p class="cert-name-cv">Dominando Automações com n8n</p>
@@ -495,52 +500,42 @@
     </div>
   </section>
 
-  <!-- Cursos ───────────────────────────────── -->
+  <!-- Cursos Complementares ────────────────────── -->
   <section class="cv-section">
     <h2 class="cv-section-title">Cursos Complementares</h2>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:.25rem 1.5rem;">
-      <p style="font-size:.8rem; color:#374151;">LangChain 1.0 – Agentes e RAG com Python <span style="color:var(--muted);">· Asimov Academy</span></p>
-      <p style="font-size:.8rem; color:#374151;">Python: Avançando na Linguagem <span style="color:var(--muted);">· Alura</span></p>
-      <p style="font-size:.8rem; color:#374151;">Streamlit – Data Apps com Python <span style="color:var(--muted);">· Asimov Academy</span></p>
-      <p style="font-size:.8rem; color:#374151;">WordPress: Sites com Elementor <span style="color:var(--muted);">· Alura</span></p>
-      <p style="font-size:.8rem; color:#374151;">Python para Empresas <span style="color:var(--muted);">· Asimov Academy</span></p>
-      <p style="font-size:.8rem; color:#374151;">Front-end / Back-end <span style="color:var(--muted);">· Alura</span></p>
-      <p style="font-size:.8rem; color:#374151;">Engenharia de Prompts <span style="color:var(--muted);">· Asimov Academy</span></p>
+    <div class="courses-grid">
+      <p class="course-line">LangChain 1.0 – Agentes e RAG com Python <span>· Asimov Academy</span></p>
+      <p class="course-line">Python: Avançando na Linguagem <span>· Alura</span></p>
+      <p class="course-line">Streamlit – Data Apps com Python <span>· Asimov Academy</span></p>
+      <p class="course-line">WordPress: Sites com Elementor <span>· Alura</span></p>
+      <p class="course-line">Python para Empresas <span>· Asimov Academy</span></p>
+      <p class="course-line">Front-end / Back-end <span>· Alura</span></p>
+      <p class="course-line">Engenharia de Prompts <span>· Asimov Academy</span></p>
     </div>
   </section>
 
-  <!-- Footer ───────────────────────────────── -->
+  <!-- Footer ───────────────────────────────────── -->
   <footer class="cv-footer">
-    <span>Wilkens Costa · wilkens.costa@outlook.com · (85) 98617-7778</span>
+    <span>Wilkens Costa &nbsp;·&nbsp; wilkens.costa@outlook.com &nbsp;·&nbsp; (85) 98617-7778</span>
     <span>Atualizado em março de 2026</span>
   </footer>
 
 </main>
 
 <script>
-  function exportPDF() {
-    const btn = document.getElementById('btn-pdf');
-    const original = btn.innerHTML;
-
-    // Visual feedback
-    btn.innerHTML = `
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation:spin .7s linear infinite">
-        <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
-      </svg>
-      Gerando…`;
-    btn.disabled = true;
-
-    setTimeout(() => {
-      window.print();
-      btn.innerHTML = original;
-      btn.disabled = false;
-    }, 300);
+  function openHint() {
+    document.getElementById('hint-overlay').classList.add('show');
   }
-
-  // Spin animation for loader icon
-  const style = document.createElement('style');
-  style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
-  document.head.appendChild(style);
+  function closeHint() {
+    document.getElementById('hint-overlay').classList.remove('show');
+  }
+  function doPrint() {
+    closeHint();
+    setTimeout(() => window.print(), 250);
+  }
+  // ESC to close hint
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeHint(); });
 </script>
+
 </body>
 </html>
