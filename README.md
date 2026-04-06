@@ -2,7 +2,7 @@
 
 Currículo web interativo de **José Wilkens da Costa Pereira Filho** — Analista de TI especializado em Infraestrutura, Redes e Segurança da Informação.
 
-🔗 **[Ver online](https://wilkens-costa.github.io/Curr-culo_Wilkens)**
+🔗 **[Ver online]([https://wilkens-costa.github.io/Curr-culo_Wilkens](https://curriculo-wilkens.vercel.app/))**
 
 ---
 
